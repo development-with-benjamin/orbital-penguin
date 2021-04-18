@@ -1,0 +1,27 @@
+{
+  "name": "penguins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@deck.gl/aggregation-layers": "^8.4.13",
+    "@deck.gl/core": "^8.4.13",
+    "@deck.gl/google-maps": "^8.4.13",
+    "@deck.gl/layers": "^8.4.13",
+    "deck.gl": "^8.4.13"
+  },
+  "devDependencies": {
+    "convert-csv-to-json": "^1.3.0",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --output-path ./public",
+    "start": "webpack-cli serve --content-base ./public --output-path ./public --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
