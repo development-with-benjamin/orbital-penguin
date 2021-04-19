@@ -11,10 +11,100 @@
             width: 100vw;
             height: 100vh;
         }
+
+        .overlay {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            height: 15vh;
+            background-color: white;
+            border-radius: 45px 45px 0 0;
+        }
+
+        .overlay-contaier {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .icon {
+            margin-top: 1vh;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .overlay-content {
+            padding: 0;
+            margin: 0 1vh 0 1vh;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .dp-flex {
+            display: flex;
+        }
+        .fd-column {
+            flex-direction: column;
+        }
+        .jc-sb {
+            justify-content: space-between;
+        }
+        .ml-10 {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 2vh;
+            margin-right: 1vh;
+            font-size: 0.7rem;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="map"></div>
+    <!-- <div class="overlay">
+        <div class="overlay-contaier">
+            <div class="icon">^</div>
+            <div class="dp-flex fd-column jc-sb">
+
+                <div class="overlay-content">
+                    <p>Dataset 1</p>
+                    <input type="checkbox">
+                </div>
+
+                <div class="dp-flex jc-sb ml-10">
+                    <p>Heatmap</p>
+                    <input type="checkbox" value="1">
+                </div>
+                <div class="dp-flex jc-sb ml-10">
+                    <p>Scatterplot</p>
+                    <input type="checkbox">
+                </div>
+
+                <div class="overlay-content">
+                    <p>Dataset 2</p>
+                    <input type="checkbox">
+                </div>
+
+                <div class="dp-flex jc-sb ml-10">
+                    <p>Heatmap</p>
+                    <input type="checkbox" value="1">
+                </div>
+                <div class="dp-flex jc-sb ml-10">
+                    <p>Scatterplot</p>
+                    <input type="checkbox">
+                </div>
+
+                <div class="dp-flex jc-sb ml-10">
+                    <p>Hexagon</p>
+                    <input type="checkbox" value="1">
+                </div>
+            </div>
+        </div>
+    </div> -->
     
 </body>

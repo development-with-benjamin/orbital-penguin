@@ -7,7 +7,7 @@ window.initMap = () => {
 
     const map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 40.0, lng: -100.0},
-        zoom: 5,
+        zoom: 7,
         /* Dark Mode Map*/
         styles: [
           { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
@@ -94,8 +94,8 @@ window.initMap = () => {
     const overlay = new GoogleMapsOverlay({
         layers: [
             //scatterplot(),
-            hexagon(),
-            heatmap()
+            hexagon()
+            //heatmap()
         ],
     });
     
@@ -120,7 +120,7 @@ const heatmap = () => new HeatmapLayer({
     data: sourceData,
     getPosition: d => [d.longitude, d.latitude],
     getWeight: d => d.n_killed + (d.n_injured * 0.5),
-    radiusPixels: 60,
+    radiusPixels: 45,
 });
 
 const hexagon = () => new HexagonLayer({
@@ -130,7 +130,7 @@ const hexagon = () => new HexagonLayer({
     getElevationWeight: d => (d.n_killed * 2) + d.n_injured,
     elevationScale: 100,
     extruded: true,
-    radius: 1609,         
+    radius: 900,         
     opacity: 0.6,        
     coverage: 0.88,
     lowerPercentile: 50
