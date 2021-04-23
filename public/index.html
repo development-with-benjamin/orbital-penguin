@@ -1,72 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbital Penguins</title>
     <script src="main.js"></script>
-
-    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPWRWta4SWCjkBCmMP4vHlCPdd6W3iRO0&callback=initMap">
-    </script>
-
-    <style>
-        body { margin: 0; }
-
-        #map {
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .overlay {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            height: 15vh;
-            background-color: white;
-            border-radius: 45px 45px 0 0;
-        }
-
-        .overlay-contaier {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .icon {
-            margin-top: 1vh;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .overlay-content {
-            padding: 0;
-            margin: 0 1vh 0 1vh;
-            font-size: 1rem;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .dp-flex {
-            display: flex;
-        }
-        .fd-column {
-            flex-direction: column;
-        }
-        .jc-sb {
-            justify-content: space-between;
-        }
-        .ml-10 {
-            margin-top: 0;
-            margin-bottom: 0;
-            margin-left: 2vh;
-            margin-right: 1vh;
-            font-size: 0.7rem;
-        }
-
-    </style>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPWRWta4SWCjkBCmMP4vHlCPdd6W3iRO0&callback=initMap"> </script>
+    <link href="./main.css" rel="stylesheet" />
 </head>
 <body>
-
+<header></header>
+<main>
     <div id="map"></div>
-    <!-- <div class="overlay">
+     <div class="overlay">
         <div class="overlay-contaier">
             <div class="icon">^</div>
             <div class="dp-flex fd-column jc-sb">
@@ -105,6 +52,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
-    
+    </div> 
+</main>
+<footer></footer>
 </body>

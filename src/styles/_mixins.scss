@@ -1,0 +1,23 @@
+//--------- MEDIA QUERY MIXINS ----------
+@mixin desktop {
+    @media (min-width: 1300px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile-landscape {
+    @media (max-height: 500px) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  
+  @mixin hidden {
+    display: none;
+    visibility: hidden;
+  }

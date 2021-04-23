@@ -1,0 +1,36 @@
+$default_margin: 2rem;
+$default_padding: 1rem;
+$default_border_radius: 10px;
+$button_border_radius: 20px;
+
+html {
+  color: $basicTextColor;
+  background-color: $primaryColor;
+}
+
+section {
+  padding-top: $default_padding;
+  padding-bottom: $default_padding;
+  min-height: 30vh;
+  & > h2 {
+    margin-left: $default_margin;
+    font-size: 2.5rem;
+    font-weight: 500;
+
+    @include mobile {
+      font-size: 2.2rem;
+    }
+    span {
+      font-weight: 800;
+    }
+  }
+}
+
+.maxwidthcontainer {
+  max-width: 85em;
+  margin: 0 auto;
+  //padding: $default_margin;;
+  @include desktop {
+    //padding: 1.5%;
+  }
+}

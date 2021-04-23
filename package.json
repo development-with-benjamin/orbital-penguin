@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --output-path ./public",
-    "start": "webpack-cli serve --content-base ./public --output-path ./public --mode development"
+    "start": "webpack-cli serve --content-base ./public --output-path ./public --mode development",
+    "sass": "sass --watch ./src/styles/main.scss:./public/main.css"
   },
   "keywords": [],
   "author": "",
