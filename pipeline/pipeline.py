@@ -28,7 +28,8 @@ class Pipeline(FTP):
                 if element.find('.') != -1:
                     self.retrieve(element, localPath, workingDir)
                 else:
-                    self.enumerate(element, localPath)
+                    remotePath = workingDir + '/' + element
+                    self.enumerate(remotePath, localPath)
         except Exception as e:
             raise e
     
@@ -42,8 +43,7 @@ class Pipeline(FTP):
         try:
             self.retrbinary(f'RETR {remoteFile}', filehandle.write)
         except Exception as e:
-            print('RETR')
-            print(e)
+            raise Exception('RETR: ' + e.args)
         filehandle.close()
 
     def __mkdir(self, path: str) -> None:
@@ -52,7 +52,7 @@ class Pipeline(FTP):
 
 def main():
     url = 'data.asc-csa.gc.ca'
-    path = 'users/OpenData_DonneesOuvertes/pub/MOPITT'
+    path = '/users/OpenData_DonneesOuvertes/pub/MOPITT'
     try:    
         p = Pipeline(url, path)
 
