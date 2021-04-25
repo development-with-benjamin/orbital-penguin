@@ -34,9 +34,11 @@ class Pipeline(FTP):
     
     def retrieve(self, file, localPath, remotePath) -> None:
         localFile = localPath + '/' + file
+        if os.path.isfile(localFile):
+            return
         remoteFile = remotePath + '/' + file
         filehandle = open(localFile, mode='wb')
-        print(localFile)
+        print(localFile) # debugging and kinda progress status
         try:
             self.retrbinary(f'RETR {remoteFile}', filehandle.write)
         except Exception as e:
