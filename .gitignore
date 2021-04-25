@@ -1,2 +1,4 @@
 node_modules
 /.sass-cache
+# no data should be in repository
+*.csv
