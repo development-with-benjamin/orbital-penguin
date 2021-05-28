@@ -90,15 +90,15 @@ class FtpClient(FTP):
         df.drop(df.columns.difference(['# Latitude',' Longitude', ' COTotalColumn']), 1, inplace=True)
         for i, row in df.iterrows():
             dataPoint = {
-                'CO2 value': row[' COTotalColumn'],
-                'Longitude': row[' Longitude'],
-                'Latitude': row['# Latitude']
+                'value': row[' COTotalColumn'],
+                'lng': row[' Longitude'],
+                'lat': row['# Latitude']
             }
             dataPoints.append(dataPoint)
         
         dataset = {
-            'Date': date,
-            'Data': dataPoints
+            'date': date,
+            'data': dataPoints
         }
         self.data.append(dataset)
 
