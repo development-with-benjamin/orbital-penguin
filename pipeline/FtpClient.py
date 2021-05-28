@@ -108,7 +108,7 @@ class FtpClient(FTP):
 
     def __getDateFromFileNameInPath(self, path: str) -> str:
         filename = self.__getFileNameFromPath(path)
-        return filename[7:10] + '-' + filename[11:12] + '-' + filename[13:14]
+        return filename[7:11] + '-' + filename[12:14] + '-' + filename[15:17]
 
     def __mkdir(self, path: str) -> None:
         if(not os.path.isdir(path)):
