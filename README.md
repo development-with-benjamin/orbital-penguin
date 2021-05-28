@@ -7,6 +7,14 @@
 - [Deck.gl](https://deck.gl/docs/get-started/using-with-react)
 - [Mapbox](https://www.mapbox.com/)
 
+### Usage
+- `yarn install`
+- insert MAPBOX_ACCESS_TOKEN in src/App.js
+- `yarn start`
+
+### Demo
+![demo image](./demo.jpg)
+
 ### Members
 - Tamara Moß
 - Daniela Wollmarker
