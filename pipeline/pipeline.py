@@ -7,8 +7,8 @@ def main():
     path = '/users/OpenData_DonneesOuvertes/pub/MOPITT'
 
     # change to your paths 
-    csvpath = "/home/benjo/ausbildung/fhsalzburg/6.Semester/deepData/orbital-penguin/pipeline/data/MOPITT/2020"
-    jsonpath = "/home/benjo/ausbildung/fhsalzburg/6.Semester/deepData/orbital-penguin/public/co2"
+    csvpath = "/home/benjo/ausbildung/fhsalzburg/6.Semester/deepData/orbital-penguin/pipeline/data/MOPITT/2019"
+    jsonpath = "./co2"
     try:    
         pipeline = FtpClient(url, path)
         print("start converting to json")

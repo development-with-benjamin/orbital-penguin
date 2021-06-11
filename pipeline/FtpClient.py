@@ -16,12 +16,14 @@ class FtpClient(FTP):
         self.__LOCAL_DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + '/data'
         self.__mkdir(self.__LOCAL_DATA_PATH)
 
+        '''
         try:
             self.login()
             self.enumerate(self.__REMOTE_DATA_PATH, self.__LOCAL_DATA_PATH)
             self.close()
         except Exception as e:
             print(e)
+        '''    
 
     def enumerate(self, remotePath: str, localPath: str) -> None:
         try:
@@ -60,12 +62,12 @@ class FtpClient(FTP):
     """
     def convertCsv(self, fromPath: str, toPath: str) -> None:
         files = os.listdir(fromPath)
-        numberCpus = cpu_count()
+        numberCpus = cpu_count() * 2
         _files = list(self.__divideList(files, numberCpus))
 
         threads = []
         for fileset in _files:
-            threads.append(threading.Thread(target=self.__searchCsv, args=(fromPath, toPath, fileset)))
+            threads.append(threading.Thread(target=self.__convertCsv, args=(fromPath, toPath, fileset)))
             threads[-1].start()
 
         for th in threads:
@@ -74,7 +76,7 @@ class FtpClient(FTP):
     """
     @brief iterates through a folder and loads content of a single csv into memory
     """
-    def __searchCsv(self, fromPath: str, toPath: str, files: list) -> None:
+    def __convertCsv(self, fromPath: str, toPath: str, files: list) -> None:
         for file in files:
             if file[-4:] == ".csv":
                 csvpath = fromPath + "/" + file
@@ -88,7 +90,7 @@ class FtpClient(FTP):
         df.drop(df.columns.difference(['# Latitude',' Longitude', ' COTotalColumn']), 1, inplace=True)
         for i, row in df.iterrows():
             dataPoint = {
-                'value': row[' COTotalColumn'],
+                'value': row[' COTotalColumn'], 
                 'lng': row[' Longitude'],
                 'lat': row['# Latitude']
             }
@@ -103,7 +105,7 @@ class FtpClient(FTP):
         self.__mkdir(toPath)
         filepath = toPath + "/" + data["date"] + ".json"
         with open(filepath, "w") as file:
-            json.dump(file, data)
+            json.dump(data, file)
 
     def __getFileNameFromPath(self, path: str) -> str:
         list = path.split('/')
@@ -111,7 +113,7 @@ class FtpClient(FTP):
 
     def __getDateFromFileNameInPath(self, path: str) -> str:
         filename = self.__getFileNameFromPath(path)
-        return filename[7:11] + '-' + filename[12:14] + '-' + filename[15:17]
+        return filename[7:11] + '-' + filename[11:13] + '-' + filename[13:15]
 
     def __mkdir(self, path: str) -> None:
         if(not os.path.isdir(path)):
