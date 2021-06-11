@@ -12,11 +12,19 @@ app.listen(3000, () => {
 });
 
 app.get('/categories', async (req, res) => {
-    // TODO: aus Datei einlesen
     
     const categories = {categories: fs.readdirSync('datasets/')};
+    var response = []; 
+    categories.categories.forEach( c => {
+        const files = fs.readdirSync('datasets/' + c);
+        let dates = [];
+        files.forEach( f => {
+            dates.push(f.replace('.json', ''));
+        });
+        response.push({'category': c, 'dates': dates})
+    });
 
-    res.json(categories);
+    res.json(response);
 });
 
 app.post('/categories', async (req, res) => {
