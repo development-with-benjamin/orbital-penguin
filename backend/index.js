@@ -20,13 +20,13 @@ app.get('/categories', async (req, res) => {
 });
 
 app.post('/categories', async (req, res) => {
-    if(req.body['categorie'] == null && req.body['date'] == null) return res.end();
+    if(req.body['category'] == null && req.body['date'] == null) return res.end();
     var df = undefined;
 
-    var file = findFile(req.body['categorie'], req.body['date'])
+    var file = findFile(req.body['category'], req.body['date'])
 
     if(file != undefined)
-        df = rFile('datasets/' + req.body['categorie'] + '/' + file);
+        df = rFile('datasets/' + req.body['category'] + '/' + file);
 
     res.json(df);
 });
