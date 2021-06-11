@@ -1,3 +1,4 @@
+from datetime import date
 import sys
 import os
 from ftplib import FTP
@@ -15,7 +16,6 @@ class FtpClient(FTP):
         self.__LOCAL_DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + '/data'
         self.__mkdir(self.__LOCAL_DATA_PATH)
 
-        self.data = []
         try:
             self.login()
             self.enumerate(self.__REMOTE_DATA_PATH, self.__LOCAL_DATA_PATH)
@@ -58,7 +58,7 @@ class FtpClient(FTP):
     @param string fromPath      system path from where csv files should be read.
     @param string toPath        system path where json file should be safed.
     """
-    def searchCsv(self, fromPath: str, toPath: str) -> None:
+    def convertCsv(self, fromPath: str, toPath: str) -> None:
         files = os.listdir(fromPath)
         numberCpus = cpu_count()
         _files = list(self.__divideList(files, numberCpus))
@@ -71,8 +71,6 @@ class FtpClient(FTP):
         for th in threads:
             th.join()
             
-        with open(toPath, mode='w') as jsonfile:
-            json.dump(self.data, jsonfile)
 
     """
     @brief iterates through a folder and loads content of a single csv into memory
@@ -81,9 +79,10 @@ class FtpClient(FTP):
         for file in files:
             if file[-4:] == ".csv":
                 csvpath = fromPath + "/" + file
-                self.convertCsv2Json(csvpath)
+                data = self.convertCsv2Json(csvpath)
+                self.saveJson(toPath, data)
         
-    def convertCsv2Json(self, csvpath: str) -> None:
+    def convertCsv2Json(self, csvpath: str) -> dict:
         date = self.__getDateFromFileNameInPath(csvpath)
         dataPoints = []
         df = pandas.read_csv(csvpath)
@@ -96,11 +95,16 @@ class FtpClient(FTP):
             }
             dataPoints.append(dataPoint)
         
-        dataset = {
+        return {
             'date': date,
             'data': dataPoints
         }
-        self.data.append(dataset)
+
+    def saveJson(self, toPath: str, data: dict) -> None:
+        self.__mkdir(toPath)
+        filepath = toPath + "/" + data["date"] + ".json"
+        with open(filepath, "w") as file:
+            json.dump(file, data)
 
     def __getFileNameFromPath(self, path: str) -> str:
         list = path.split('/')
