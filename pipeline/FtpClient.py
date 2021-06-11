@@ -71,7 +71,6 @@ class FtpClient(FTP):
         for th in threads:
             th.join()
             
-
     """
     @brief iterates through a folder and loads content of a single csv into memory
     """

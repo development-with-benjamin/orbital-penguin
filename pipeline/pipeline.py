@@ -12,7 +12,7 @@ def main():
     try:    
         pipeline = FtpClient(url, path)
         print("start converting to json")
-        pipeline.searchCsv(csvpath, jsonpath)
+        pipeline.convertCsv(csvpath, jsonpath)
     except Exception as e:
         print(e)
 
