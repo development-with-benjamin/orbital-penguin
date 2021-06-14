@@ -2,7 +2,9 @@
 
 ### Reference
 
-    https://fireship.io/lessons/deckgl-google-maps-tutorial/
+- [Miro Board](https://miro.com/app/board/o9J_lMPHeoo=/)
+- [Project Plan Google Docs](https://docs.google.com/document/d/1cfqFDoHBj0jy1ysmjlV7y5nwpOfwz7TCiEJbX7gNZTc/edit)
+- [Initial Präsentation](./Home_Planet_at_Your_Fingertips.pdf)
 
 ### Technologies
 
@@ -21,6 +23,10 @@
 
 - `npm run start`
 - localhost:9000
+
+### Data Source
+
+- CO2 Data: ftp://asc-csa.gc.ca/users/OpenData_DonneesOuvertes ?
 
 ### Demo
 
