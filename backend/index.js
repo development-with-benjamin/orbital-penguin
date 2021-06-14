@@ -1,21 +1,21 @@
 const express = require("express");
 const cors = require('cors');
-const bodyparser = require('body-parser');
+const bodyparser = require('body-parser')
 const fs = require('fs');
 
 const app = express();
 
 app.use(cors(), bodyparser.json());
 
-app.listen(3000, () => {
-    console.log("Backend listening to port 3000.");
+app.listen(9000, () => {
+    console.log("Backend listening to port 9000.");
 });
 
 app.get('/categories', async (req, res) => {
     
-    const categories = {categories: fs.readdirSync('datasets/')};
+    const categories =  fs.readdirSync('datasets/');
     var response = []; 
-    categories.categories.forEach( c => {
+    categories.forEach( c => {
         const files = fs.readdirSync('datasets/' + c);
         let dates = [];
         files.forEach( f => {

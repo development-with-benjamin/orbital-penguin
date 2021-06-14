@@ -1,21 +1,25 @@
 .dataset_choice_box {
-    position: fixed;
-    left: 10px;
-    top: 10px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem 1rem 1.5rem;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem 1rem 1.5rem;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .dataset_choice_box__label {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .form {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
+.category__dates {
+  display: flex;
+  flex-direction: column;
+}

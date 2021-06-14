@@ -20,23 +20,20 @@ import {HexagonLayer} from '@deck.gl/aggregation-layers';
  * https://data.lacity.org/A-Prosperous-City/Listing-of-Active-Businesses/6rrh-rzua
  */
 
-export const getMapOptions = ()  => {
+/* export const getMapOptions = ()  => {
   return {
     center: {lat: 34.068739, lng: -118.323170},
     zoom: 13
   }
-}
+} */
 
-const HexagonLayerExample = () => {
-
-  const DATA_URL = `https://data.lacity.org/resource/6rrh-rzua.json`,
-        qs = '?$limit=150000&$WHERE=location_1 IS NOT NULL';
+const HexagonLayerExample = ({ currentData }) => {
 
   return new HexagonLayer({
     id: 'heatmap',
-    data: DATA_URL + qs,
-    colorDomain: [0,50],
-    getPosition: d => [+d.location_1.longitude, +d.location_1.latitude],
+    data: currentData.data,
+    colorDomain: [0,10],
+    getPosition: d => [+d.lng, +d.lat],
     colorRange: [   
       [196, 255, 255],
       [116, 255, 255],
@@ -45,13 +42,14 @@ const HexagonLayerExample = () => {
       [63, 141, 90],  
       [47, 142, 34]
     ],        
-    elevationRange: [0, 300],
-    elevationScale: 250,
+    elevationRange: [0, 100],
+    elevationScale: 10000,
     extruded: true,
-    radius: 500,        
+    pickable: true,
+    radius: 20000,        
     opacity: 1,        
-    upperPercentile: 50,
-    coverage: 0.8
+    upperPercentile: 100,
+    coverage: 1
   })
   
 }
