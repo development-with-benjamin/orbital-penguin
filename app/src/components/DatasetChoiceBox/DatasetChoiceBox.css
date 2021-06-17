@@ -13,6 +13,7 @@
 
 .dataset_choice_box__label {
   margin: 0.5rem 0;
+  color: #757575;
 }
 
 .form {
@@ -22,4 +23,26 @@
 .category__dates {
   display: flex;
   flex-direction: column;
+}
+
+.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1 {
+  transition: all 0.2s ease;
+}
+
+.MuiTypography-root.MuiFormControlLabel-label.MuiTypography-body1:hover {
+  transform: scale(1.1) translateX(10px);
+}
+
+.category > .category__label {
+  background-color: rgb(13, 134, 138);
+  padding: 0.5rem;
+  width: fit-content;
+  border-radius: 10px;
+  border: 2px solid #000;
+  color: white;
+  margin-top: 0.4rem;
+}
+
+.category__text {
+  margin: 0.5rem 0 0 0;
 }

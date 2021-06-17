@@ -6,10 +6,10 @@ import Geocoder from 'react-map-gl-geocoder'
 
 import HexagonLayerExample from '../../layers/hexagon';
 
-const MAPBOX_ACCESS_TOKEN = "";
+const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || "";
 
 
-const Map = ({ onLoadData, category }) => {
+const Map = ({ setIsLoading, onLoadData, category }) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { onLoadData(); }, []);
@@ -17,11 +17,10 @@ const Map = ({ onLoadData, category }) => {
     const [currentLayer, setCurrentLayer] = useState({})
     const [hasLoaded, setHasLoaded] = useState(false)
 
-    window.category = category
-
     useEffect(() => {
       seCurrentData(category)
       setCurrentLayer(HexagonLayerExample({ currentData } ))
+      setIsLoading(false)
 
       if(!hasLoaded) {
         setViewport(currentData.data 

@@ -6,7 +6,7 @@ const fetchCategoryActionCreator = (payload) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       };
-      await fetch('http://localhost:9000/categories', requestOptions)
+      await fetch('https://orbital-penguins-backend.herokuapp.com/categories', requestOptions)
         .then(async (response) => {
           const data = await response.json();
           if (!response.ok) {

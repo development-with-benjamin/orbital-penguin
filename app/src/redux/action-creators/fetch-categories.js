@@ -1,6 +1,6 @@
 const fetchCategoriesActionCreator = () => async (dispatch) => {
     try {
-      await fetch('http://localhost:9000/categories')
+      await fetch('https://orbital-penguins-backend.herokuapp.com/categories')
         .then(async (response) => {
           const data = await response.json();
           if (!response.ok) {
