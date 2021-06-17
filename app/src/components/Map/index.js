@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import DeckGL from '@deck.gl/react';
 import MapGL from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder'
-// import {layers} from './../../layers';
 
 import HexagonLayerExample from '../../layers/hexagon';
 
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || "";
-
 
 const Map = ({ setIsLoading, onLoadData, category }) => {
 
@@ -19,18 +17,17 @@ const Map = ({ setIsLoading, onLoadData, category }) => {
 
     useEffect(() => {
       seCurrentData(category)
-      setCurrentLayer(HexagonLayerExample({ currentData } ))
-      setIsLoading(false)
-
+      setCurrentLayer(HexagonLayerExample({ currentData }))
+      
       if(!hasLoaded) {
         setViewport(currentData.data 
           ? {latitude: currentData.data[2000].lat, longitude: currentData?.data[2000].lng, zoom: 5} 
           : {latitude: 40.73, longitude: -73.75, zoom: 9}
         );
-        setHasLoaded(true);
+        setHasLoaded(true)
       }
-      
-    }, [category, currentData, hasLoaded])
+      setIsLoading(false) 
+    }, [category, currentData, hasLoaded, setIsLoading])
 
   
     const [viewport, setViewport] = useState({

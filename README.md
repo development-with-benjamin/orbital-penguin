@@ -28,6 +28,11 @@
 
 - CO2 Data: ftp://asc-csa.gc.ca/users/OpenData_DonneesOuvertes ?
 
+### Deployment
+
+- Frontend: https://vm-fuchsia.multimediatechnology.at/
+- Backend: https://orbital-penguins-backend.herokuapp.com/
+
 ### Demo
 
 ![demo image](./demo.jpg)

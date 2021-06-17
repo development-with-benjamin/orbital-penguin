@@ -1,0 +1,37 @@
+name: Deploy to VM Fuchsia
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checking out repo
+        uses: actions/checkout@v2
+      - name: Use Yarn
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: Build yarn
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
+        env:
+          REACT_APP_MAPBOX_ACCESS_TOKEN: ${{secrets.REACT_APP_MAPBOX_ACCESS_TOKEN}}
+      - name: RSync Deployment
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzr --delete --exclude="" --include="" --filter=""
+          path: ./
+          remote_path: /var/www/orbital-penguins/
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+        

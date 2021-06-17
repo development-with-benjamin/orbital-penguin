@@ -13,14 +13,16 @@ const DatasetChoiceBox = ({ isLoading, setIsLoading, categories, onGetData }) =>
     const [currentCategory, setCurrentCategory] = useState("co2");
     const [currentDate, setCurrentDate] = useState("2019-12-20");
 
-    useEffect(() => {onGetData({category: currentCategory, date: currentDate})},[onGetData, currentDate, currentCategory])
+    useEffect(() => {
+        onGetData({category: currentCategory, date: currentDate})
+        setIsLoading(true)
+    },[onGetData, currentDate, currentCategory, isLoading, setIsLoading])
 
     const handleChange = (event) => {
         setValue(event.target.value);
         const categoryAndDate = event.target.value.split(":");
         setCurrentCategory(categoryAndDate[0])
         setCurrentDate(categoryAndDate[1])
-        setIsLoading(true)
     };
 
     return (

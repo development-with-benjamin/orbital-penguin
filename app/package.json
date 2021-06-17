@@ -15,7 +15,7 @@
     "deck.gl": "^8.4.16",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-map-gl": "^6.1.15",
+    "react-map-gl": "5.2.11",
     "react-map-gl-geocoder": "^2.1.6",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
@@ -39,7 +39,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not chrome < 51",
+      "not ie 11",
+      "not safari < 10"
     ],
     "development": [
       "last 1 chrome version",

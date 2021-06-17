@@ -7,8 +7,8 @@ import Map from './components/Map/container'
 
 const App = () => {
 
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   return (
     <>
       <header></header>
