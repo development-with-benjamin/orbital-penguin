@@ -1,37 +1,44 @@
 const express = require("express");
 const cors = require('cors');
-const bodyparser = require('body-parser')
 const fs = require('fs');
 
 const app = express();
 
-app.use(cors(), bodyparser.json());
+app.use(cors(), express.json());
 
 app.listen(process.env.PORT || 9000, () => {
     console.log("Backend listening to port 9000.");
 });
 
 app.get('/categories', async (req, res) => {
-    
-    const categories =  fs.readdirSync('datasets/');
-    var response = []; 
-    categories.forEach( c => {
-        const files = fs.readdirSync('datasets/' + c);
-        let dates = [];
-        files.forEach( f => {
-            dates.push(f.replace('.json', ''));
-        });
-        response.push({'category': c, 'dates': dates})
-    });
+    let counter = 0;
+    let response = []; 
+    fs.promises.readdir('datasets/').then(categories => {   
+        categories.forEach( c => {
+            fs.promises.readdir('datasets/' + c).then((files) => {
+                let dates = [];
+                files.forEach( f => {
+                    dates.push(f.replace('.json', ''));
+                });
+                response.push({'category': c, 'dates': dates});
+                
+            }).then(() => {
+                counter++;
 
-    res.json(response);
+                if (counter === categories.length) {
+                    res.json(response);
+                }
+            });
+        })
+        
+    })
 });
 
 app.post('/categories', async (req, res) => {
     if(req.body['category'] == null && req.body['date'] == null) return res.end();
-    var df = undefined;
+    let df = undefined;
 
-    var file = findFile(req.body['category'], req.body['date'])
+    const file = findFile(req.body['category'], req.body['date'])
 
     if(file != undefined)
         df = rFile('datasets/' + req.body['category'] + '/' + file);
@@ -40,8 +47,8 @@ app.post('/categories', async (req, res) => {
 });
 
 function findFile(dataSet, date) {
-    var files = fs.readdirSync('datasets/' + dataSet);
-    var file = undefined;
+    let files = fs.readdirSync('datasets/' + dataSet);
+    let file = undefined;
     files.forEach(f => {
         if(f.includes(date))
             file = f;
