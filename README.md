@@ -4,13 +4,15 @@
 
 - [Miro Board](https://miro.com/app/board/o9J_lMPHeoo=/)
 - [Project Plan Google Docs](https://docs.google.com/document/d/1cfqFDoHBj0jy1ysmjlV7y5nwpOfwz7TCiEJbX7gNZTc/edit)
-- [Initial Präsentation](./Home_Planet_at_Your_Fingertips.pdf)
+- [Initial Präsentation](./Home_Planet_at_Your_Fingertips_Plan.pdf)
+- [Final Präsentation](./Home_Planet_at_Your_Fingertips_Plan.pdf)
 
 ### Technologies
 
-- React App
+- [React App](https://reactjs.org/)
 - [Deck.gl](https://deck.gl/docs/get-started/using-with-react)
 - [Mapbox](https://www.mapbox.com/)
+- [Express Node](https://expressjs.com/)
 
 ### Frontend (App)
 
@@ -26,7 +28,7 @@
 
 ### Data Source
 
-- CO2 Data: ftp://asc-csa.gc.ca/users/OpenData_DonneesOuvertes ?
+- CO2 Data: ftp://asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/
 
 ### Deployment
 
